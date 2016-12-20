@@ -1,0 +1,23 @@
+{
+    "integerValue": 123456,
+    "floatValue": 123.456,
+    "stringValue": "This is a string.",
+    "sampleClass": {
+        "autoProperty": 0,
+        "integerValue": 123456,
+        "floatValue": 123.456,
+        "stringValue": "This is a string.",
+        "enumValue": "Value2",
+        "intArray": [
+            1,
+            2,
+            3
+        ],
+        "anotherClassInstance": {
+            "testString": "This is from an instance of AnotherClass!",
+            "testInteger": 789,
+            "valuePassedInFromConstructor": 654321
+        },
+        "privateButSerialized": "I'm a private field with serializable attribute."
+    }
+}
