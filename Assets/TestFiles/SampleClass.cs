@@ -21,6 +21,8 @@ public class SampleClass
     public int[] intArray = new int[] { 1, 2, 3 };
     public AnotherClass anotherClassInstance = new AnotherClass(654321);
 
+    public GenericClass<int> genericClass = new GenericClass<int>(321);
+
     [fsProperty]
     private string privateButSerialized = "I'm a private field with serializable attribute.";
 
@@ -30,7 +32,7 @@ public class SampleClass
     private string nonSerializedPrivateField = "You won't see this in serialized output.";
 }
 
-// Note that this class won't be the one directly serialized
+// This class won't be the one directly serialized
 // because its name doesn't match the file name.
 public class AnotherClass
 {
@@ -41,6 +43,18 @@ public class AnotherClass
     public AnotherClass(int someValue)
     {
         this.valuePassedInFromConstructor = someValue;
+    }
+}
+
+// This is an example of a generic class that couldn't be
+// directly serialized.
+public class GenericClass<T> where T : struct
+{
+    public T genericValueFromConstructor;
+
+    public GenericClass(T value)
+    {
+        this.genericValueFromConstructor = value;
     }
 }
 

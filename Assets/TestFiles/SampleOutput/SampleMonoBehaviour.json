@@ -18,6 +18,9 @@
             "testInteger": 789,
             "valuePassedInFromConstructor": 654321
         },
+        "genericClass": {
+            "genericValueFromConstructor": 321
+        },
         "privateButSerialized": "I'm a private field with serializable attribute."
     }
 }
