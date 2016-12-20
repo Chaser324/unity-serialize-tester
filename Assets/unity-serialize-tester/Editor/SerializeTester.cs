@@ -20,7 +20,7 @@ public class SerializeTester
 
         if (type == null)
         {
-            Debug.LogError("Can't find class with name " + Selection.activeObject.name + ". It may be in a different assembly.");
+            Debug.LogError("Can't find class with name " + Selection.activeObject.name + ".");
             return;
         }
 
