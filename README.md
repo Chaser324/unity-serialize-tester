@@ -3,6 +3,8 @@
 
 Quickly and easily produce serialized JSON output from any class. This is a great tool for verifying that all necessary fields are being serialized properly. I also really appreciate it as a tool for developing save/settings files that can be read and deserialized into in-game object instances.
 
+![](https://raw.githubusercontent.com/Chaser324/unity-serialize-tester/master/sampleImage.png)
+
 # Installation
 
 1. This tool requires FullSerializer, a great and highly portable serialization library. You can grab it from its [GitHub repository](https://github.com/jacobdufault/fullserializer). Just import the `Assets/FullSerializer` directory into your Unity project's `Assets` directory. (If you like FullSerializer, consider purchasing [FullInspector](http://jacobdufault.github.io/fullinspector/).)
