@@ -70,8 +70,7 @@ public class SerializeTester
     [MenuItem("Assets/Serialize", true)]
     private static bool SerializeFileValidate()
     {
-        Type selectedType = Selection.activeObject.GetType();
-        return (selectedType == typeof(MonoScript));
+        return (Selection.activeObject != null && Selection.activeObject.GetType() == typeof(MonoScript));
     }
 
     private static Type GetType(string className)
