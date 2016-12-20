@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-using FullSerializer;
+﻿using FullSerializer;
 
 namespace SuperSystems.UnityTools.Test
 {

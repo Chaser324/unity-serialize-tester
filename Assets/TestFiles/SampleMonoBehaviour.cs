@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace SuperSystems.UnityTools.Test
 {
 
-public class SampleMonoBehavior : MonoBehaviour
+public class SampleMonoBehaviour : MonoBehaviour
 {
     public int integerValue = 123456;
     public float floatValue = 123.456f;
