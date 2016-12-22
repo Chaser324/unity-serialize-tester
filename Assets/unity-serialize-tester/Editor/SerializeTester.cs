@@ -11,8 +11,32 @@ namespace SuperSystems.UnityTools
 
 public class SerializeTester
 {
-    [MenuItem("Assets/Serialize")]
-    private static void SerializeFile()
+    private enum Serializer
+    {
+        FullSerializer,
+        JsonUtility
+    }
+
+    [MenuItem("Assets/Serialize/FullSerializer")]
+    private static void SerializeFileFS()
+    {
+        SerializeFile(Serializer.FullSerializer);
+    }
+
+    [MenuItem("Assets/Serialize/JsonUtility")]
+    private static void SerializeFileUnity()
+    {
+        SerializeFile(Serializer.JsonUtility);
+    }
+
+    [MenuItem("Assets/Serialize/FullSerializer", true)]
+    [MenuItem("Assets/Serialize/JsonUtility", true)]
+    private static bool SerializeFileValidate()
+    {
+        return (Selection.activeObject != null && Selection.activeObject.GetType() == typeof(MonoScript));
+    }
+
+    private static void SerializeFile(Serializer serializer)
     {
         // Get type from class name.
         string className = Selection.activeObject.name;
@@ -34,18 +58,30 @@ public class SerializeTester
         }
 
         // Serialize data.
-        fsData data;
-        fsSerializer serializer = new fsSerializer();
-        serializer.TrySerialize(type, obj, out data);
-
-        if (data == null)
+        string dataStr = null;
+        switch (serializer)
         {
-            Debug.LogError("Could not serialize class " + Selection.activeObject.name);
-            return;
+            case Serializer.FullSerializer:
+                fsData data;
+                fsSerializer fs = new fsSerializer();
+                fs.TrySerialize(type, obj, out data);
+
+                if (data == null)
+                {
+                    Debug.LogError("Could not serialize class " + Selection.activeObject.name);
+                    return;
+                }
+
+                dataStr = fsJsonPrinter.PrettyJson(data);
+
+                break;
+            case Serializer.JsonUtility:
+                dataStr = JsonUtility.ToJson(obj, true);
+                break;
         }
 
         // Convert data to text format for output.
-        byte[] dataBytes = Encoding.UTF8.GetBytes(fsJsonPrinter.PrettyJson(data));
+        byte[] dataBytes = Encoding.UTF8.GetBytes(dataStr);
 
         // Get the filepath and delete any pre-existing file.
         string filepath =
@@ -65,12 +101,6 @@ public class SerializeTester
 
         // Refresh AssetDatabase so the new file is visible in Unity Editor.
         AssetDatabase.Refresh();
-    }
-
-    [MenuItem("Assets/Serialize", true)]
-    private static bool SerializeFileValidate()
-    {
-        return (Selection.activeObject != null && Selection.activeObject.GetType() == typeof(MonoScript));
     }
 
     private static Type GetType(string className)
