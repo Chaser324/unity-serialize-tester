@@ -1,7 +1,7 @@
 # Serialize Tester
 > A simple Unity3D utility for testing class serialization.
 
-Quickly and easily produce serialized JSON output from any class. This is a great tool for verifying that all necessary fields are being serialized properly. I also really appreciate it as a tool for developing save/settings files that can be read and deserialized into in-game object instances.
+Quickly and easily produce serialized JSON output from any class. This is a great tool for verifying that all necessary fields are being serialized properly. I also really appreciate it as a tool for developing save/settings files that can be read and deserialized into in-game object instances. Can serialize files using either FullSerializer or Unity's built-in JsonUtility.
 
 ![](https://raw.githubusercontent.com/Chaser324/unity-serialize-tester/master/sampleImage.png)
 
@@ -12,7 +12,7 @@ Quickly and easily produce serialized JSON output from any class. This is a grea
 
 # Usage
 
-From the Unity Editor, right-click on any C# script file and click `Serialize`. The JSON output will appear in the same directory. It's just that simple.
+From the Unity Editor, right-click on any C# script file and click `Serialize/FullSerializer` or `Serialize/JsonUtility`. The JSON output will appear in the same directory. It's just that simple.
 
 There are a few caveats to what classes can be serialized using this tool:
 * The class name must match the file name, for example `public class SampleClass` in `SampleClass.cs`.
